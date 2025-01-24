@@ -1,6 +1,6 @@
 streamlit 
 langchain 
-langchain_ollama
+groq
 selenium
 beautifulsoup4
 lxml 

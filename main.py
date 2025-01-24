@@ -5,7 +5,7 @@ from scrap import (
     clean_body_content,
     extract_body_content
 )
-from parse import parse_with_ollama
+from parse import parse_with_groq
 
 
 st.title('AI Web Scrapper')
@@ -31,5 +31,5 @@ if 'dom_content' in st.session_state:
             st.write('Parsing the content')
 
             dom_chunks = split_dom_content(st.session_state.dom_content)
-            result = parse_with_ollama(dom_chunks, parse_description)
+            result = parse_with_groq(dom_chunks, parse_description)
             st.write(result)

@@ -1,6 +1,10 @@
-from langchain_ollama import OllamaLLM
-from langchain_core.prompts import ChatPromptTemplate
+import os
+from groq import Groq
 
+# Initialize the Groq client
+client = Groq(
+    api_key='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'
+)
 
 template = (
     "You are tasked with extracting specific information from the following text content: {dom_content}. "
@@ -11,19 +15,26 @@ template = (
     "4. **Direct Data Only:** Your output should contain only the data that is explicitly requested, with no other text."
 )
 
-model = OllamaLLM(model='llama3.2')
-
-def parse_with_ollama(dom_chunks, parse_description):
-    prompt = ChatPromptTemplate.from_template(template)
-    chain = prompt | model
-
+def parse_with_groq(dom_chunks, parse_description):
     parsed_results = []
 
     for i, chunk in enumerate(dom_chunks, start=1):
-        response = chain.invoke(
-            {'dom_content': chunk, 'parse_description': parse_description}
+        # Prepare the prompt
+        prompt = template.format(dom_content=chunk, parse_description=parse_description)
+
+        # Call the Groq API
+        response = client.chat.completions.create(
+            messages=[
+                {"role": "system", "content": "You are an expert text extractor."},
+                {"role": "user", "content": prompt},
+            ],
+            model="llama-3.3-70b-versatile",
+            temperature=0.0  # Set to 0.0 for deterministic results
         )
+
+        # Extract the AI's response
+        ai_response = response.choices[0].message.content.strip()
         print(f'Parsed batch {i} of {len(dom_chunks)}')
-        parsed_results.append(response)
+        parsed_results.append(ai_response)
 
     return '\n'.join(parsed_results)
