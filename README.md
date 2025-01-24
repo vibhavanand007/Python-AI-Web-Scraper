@@ -4,10 +4,6 @@ This project demonstrates how to build an **AI-powered web scraper** using **Pyt
 
 Follow this guide to set up and run your own AI web scraper!
 
-## 🎥 Video Tutorial
-
-Watch the full tutorial on YouTube here: [AI Web Scraper with Python - Tech With Tim](https://www.youtube.com/watch?v=<video-id>)
-
 ## 🛠️ Tools & Libraries
 
 This project uses the following tools and libraries:
