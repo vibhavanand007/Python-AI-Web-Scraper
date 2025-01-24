@@ -22,4 +22,4 @@ This project uses the following tools and libraries:
 # Python-AI-Web-Scraper V 0.0.2
 ```
 
-You can view the live app here: [AI Web Scraper V 0.0.1](https://ai-web-scraper-v-0-1.streamlit.app/)
+You can view the live app here: [AI Web Scraper V 0.0.2](https://ai-web-scraper-v-0-1.streamlit.app/)
