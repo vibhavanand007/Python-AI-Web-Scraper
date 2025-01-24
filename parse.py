@@ -1,9 +1,9 @@
-import os
+import streamlit as st
 from groq import Groq
 
 # Initialize the Groq client
 client = Groq(
-    api_key='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'
+    api_key=st.secrets["GROQ_API_KEY"]
 )
 
 template = (
